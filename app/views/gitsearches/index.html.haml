@@ -1,0 +1,87 @@
+.main
+  %p#notice= notice
+  .container
+    .row.text-center
+      %h2= "#{@name} primarily develops applications using #{@primary_languages.to_sentence}"
+
+    .row
+      .col-md-10.col-xs-12.center-block{:style => "float:none"}
+        .col-md-6 
+          .row
+            .col-xs-4
+              %p
+                %strong Primary language
+            .col-xs-4
+              %p
+                %strong Repos
+            .col-xs-4
+              %p
+                %strong Percentage (rounded to integer)
+
+          -@counts.each do |language, number|
+            .row
+              .col-xs-4
+                %p= language
+              .col-xs-4
+                %p= number
+              .col-xs-4
+                %p= "#{(100.00/@languages_list.length * number).round} %"
+
+        %div#chart.col-md-6
+          <canvas id='pieChart' width='800' height='650'></canvas><br>
+
+
+:javascript 
+
+  $("form").submit(function( event ) {
+    event.preventDefault();
+    window.location.assign("/gitsearches/?gh_name="+$("input#name").val())
+  } );
+
+  $(document).ready( function() {
+     var pieChart= document.getElementById("pieChart").getContext("2d");
+  var myPieChart = new Chart(pieChart,{
+    type: 'pie',
+    data: data,
+    options: options
+  });
+  });
+ 
+
+  var data = {
+    labels: #{@languages},
+    datasets: [
+        {
+            data: #{@numbers},
+            backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                "#00CE58",
+                "#FF3FBF",
+                "#006400",
+                "#ADFF2F",
+                "#800000",
+                "#7B68EE"
+
+            ],
+            hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                "#00CE58",
+                "#FF3FBF",
+                "#006400",
+                "#ADFF2F",
+                "#800000",
+                "#7B68EE"
+            ]
+        }]
+  };
+
+  var options = {
+    segmentShowStroke : false,
+    animateScale : true,
+    responsive: true
+  }
+

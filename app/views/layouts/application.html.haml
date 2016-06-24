@@ -1,0 +1,38 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title GithubCounter
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NTLGWF"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NTLGWF');</script>
+    <!-- End Google Tag Manager -->
+
+%body
+  %header
+    = render 'layouts/navigation'
+    = yield
+
+
+  :javascript
+
+    $("form#nav-search").submit(function( event ) {
+      event.preventDefault();
+      window.location.assign("/gitsearches/?gh_name="+$("input#nav_gh_name").val());
+    } );
+
+    function showSearch() {
+      $('form.nav-search').toggle();
+      $('#nav-search-display').hide();
+      $('input#nav_gh_name').focus();
+    }

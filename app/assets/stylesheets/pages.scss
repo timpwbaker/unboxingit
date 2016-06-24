@@ -1,0 +1,37 @@
+.tweet {
+	border-bottom: 1px solid #e1e8ed;
+	border-top: 1px solid #e1e8ed;
+	background-color: #eff0f1;
+	height:100px;
+}
+
+.tweet-image img {
+	margin-top:10px;
+	width:62px;
+	border-radius:3px;
+}
+
+p.handle {
+	float:left;
+	margin-bottom: 0px;
+	margin-top:10px;
+	margin-right: 5px;
+}
+
+p.time {
+	float:right;
+	margin-top:10px;
+	margin-bottom: 0px;
+	color:#808080;
+}
+
+p.content {
+	display:block;
+	float:none;
+}
+
+.tweet-border {
+	background-color: #fbfcfc;
+	height:20px;
+	
+}

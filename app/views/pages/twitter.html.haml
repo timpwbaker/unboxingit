@@ -1,0 +1,16 @@
+.main.twitter-page
+  .container
+    .row
+      .col-xs-11.col-sm-9.col-md-6.center-block.tweet-border{:style => "float:none"}
+      .col-xs-11.col-sm-9.col-md-6.center-block.tweet{:style => "float:none"}
+        .col-xs-3.col-sm-2.tweet-image
+          =image_tag "horse-js.png"
+        .col-md-10.col-sm-10.col-xs-9.tweet-header
+          %p.handle
+            %strong horse_js
+          %p.time 7 days
+        .col-xs-8.tweet-copy
+          %p.content 
+          As much as I want to be, I'm not 
+          =link_to "@horse_js", "https://twitter.com/horse_js"
+      .col-xs-11.col-sm-9.col-md-6.center-block.tweet-border{:style => "float:none"}

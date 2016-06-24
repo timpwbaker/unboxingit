@@ -1,0 +1,11 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      <a href="/" class="home btn btn-primary"><i class="fa fa-home" aria-hidden="true"></i></a>
+    .navbar-right
+      = form_tag "/", :id => 'nav-search', :class => 'nav-search' do
+        = text_field_tag(:nav_gh_name)
+        <button type="submit" name="commit" class="btn btn-secondary submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+      <button onclick="showSearch();" id="nav-search-display" type="navbar-search" name="commit" class="btn btn-secondary submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+

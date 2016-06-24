@@ -1,0 +1,15 @@
+.main
+  %p#notice= notice
+  %div.home-search 
+    %h1.title What language do they love?
+    %p *Enter a github username
+    = form_tag "/", :id => 'home-search'  do
+      = text_field_tag(:home_gh_name, params[:gh_name])
+      <button type="submit" name="commit" class="btn btn-secondary submit">find user <i class="fa fa-github" aria-hidden="true"></i></button>
+
+:javascript
+  
+  $("form#home-search").submit(function( event ) {
+    event.preventDefault();
+    window.location.assign("/gitsearches/?gh_name="+$("input#home_gh_name").val());
+  } );

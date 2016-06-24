@@ -1,0 +1,43 @@
+== Unboxingit
+
+A front end for the GitHub API. Users can put in a github username and the application will guess what their favourite programming language is using the languages used across their public repos.
+
+You can view it here: http://unboxingit.herokuapp.com. It should work fine to pull it and then just deploy to Heroku.
+
+As a proof of concept I started with a quick client side JS and jQuery page: http://tb.madethat.co.uk/githubapi.html
+
+If I was building this as a personal isolated project with no chance of extension I would have completed this as a client side only application.  Using rails to provide this functionality felt a little like using a sledgehammer to crack a nut. However I imagined it as a client feature request within a larger application, and using rails better showcases my knowledge. Additionally this approach had more scope for learning.
+
+Ruby on Rails back end using Sass and HAML for the front end. 
+
+Running in dev:
+
+    $ bundle
+    $ rails s
+
+The application has a (currently unused) postgres database. You don’t need a database running locally to run the app, but you do need one running to run the tests. This is something I would correct in stage two.
+
+Running tests:
+
+    install posgres (I find the postgres app the easiest)
+    start postgres
+    $ rake db:create
+    $ rake test
+
+rake test  will run 4 tests. All run on gitsearches#index to ensure that the application is correctly receiving JSON from the GitHub API, creating an array of the languages used by the user in question and converting the array into the required variables. 
+
+In the event of failing tests the name of the test that fails will tell you where in the controller the error is occurring
+
+The application currently usese jQuery (gem), Bootstrap (gem), Font Awesome (cdn) and chart.js (vendor code)
+
+My twitter design can be found at: http://unboxingit.herokuapp.com/pages/twitter 
+
+Stage two:
+* There are no known bugs to fix, I have asked for comments from 2 users who had no problems, but further testing would be required to ensure the user journey are clear to everyone and all legacy/niche browsers had no issues. 
+* The gitsearches#index controller is very logic heavy. This is to be expected with this kind of task, but it could be streamlined with some work. Some of the code is a tad obtuse. For the time being I have explained with comments.
+* Remove the need for PG database to be running for tests to execute
+* Change the name of the gitsearches class. I don't think it reads well in a URL and it doesn't realy mean much to the end user.
+
+Known issues:
+* The github API only allows 60 requests per IP per hour. So this application could not grow into a batch processing application without introducting oAuth
+* Currently it sits on a Heroku hobby instance. Which is painful slow to boot up. 
