@@ -37,6 +37,7 @@ Stage two:
 * The gitsearches#index controller is very logic heavy. This is to be expected with this kind of task, but it could be streamlined with some work. Some of the code is a tad obtuse. For the time being I have explained with comments.
 * Remove the need for PG database to be running for tests to execute
 * Change the name of the gitsearches class. I don't think it reads well in a URL and it doesn't realy mean much to the end user.
+* Do some investigation to decide whether there are any other github API errors I should be handling
 
 Known issues:
 * The github API only allows 60 requests per IP per hour. So this application could not grow into a batch processing application without introducting oAuth
